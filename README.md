@@ -8,8 +8,11 @@
 然后在sfsgo文件夹的“设置.txt”，将下面的mysql配置内容更改为自己的，
 
 root=root
+
 psw=123456
+
 dbname=sfs2.5
+
 cache=5
 
 
@@ -19,8 +22,11 @@ cache=5
 
 root，数据库用户名
 psw，密码
+
 dbname，数据库名称
+
 cache，缓存，1g内存可以填写 10000
+
 
 
 注意，ip不用填写。
