@@ -1,5 +1,5 @@
-# sfs
-乾隆大藏经搜索引擎
+# 乾隆大藏经搜索引擎
+
 
 网站采用 golang+mysql5.7+ Bootstrap v5构架开发。
 
