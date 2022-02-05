@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+    <title>{{jf "乾隆大藏经搜索说明" .Ift}}--{{jf "搜佛说" .Ift}}</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+        <div class="card">
+            <!-- Default panel contents -->
+            <div class="card-footer">
+                <h1>
+                    {{jf "乾隆大藏经搜索说明/搜索技巧" .Ift}}
+                </h1>
+            </div>
+            <div class="card-footer">
+                <b>{{jf "单词搜索" .Ift}}</b>：{{jf "可用《乾隆大藏经》中任意字，词，句搜索，理论上获得结果的成功率是100%。" .Ift}}。
+            </div>
+            <div class="card-footer">
+                <div class="card-footer">
+                <b>{{jf "单词搜索" .Ift}}</b>{{jf "长度超过7个字自动忽略" .Ift}}。{{jf "最多支持100页" .Ift}}。
+            </div>
+            </div>
+            <div class="card-footer">
+
+                <b>{{jf "组合搜索" .Ift}}</b>：{{jf "如记不得经文整句，但记得其中的2个或多个词，则可以用这些字词组合搜索，字词等之间用【空格】等标点符号隔开" .Ift}}。
+            </div>
+            <div class="card-footer">
+                <div class="card-footer">
+                    <b>{{jf "组合搜索" .Ift}}</b>{{jf "查询，最多支持4个组合查询。搜索词最大长度是7个字。超出会自动忽略" .Ift}}。
+                </div>
+                <div class="card-footer">
+                    <b>{{jf "组合搜索" .Ift}}</b>{{jf "默认是【精准搜索模式】，在大藏经中同一个句子内，理论上获得结果的成功率是100%" .Ift}}。
+                </div>
+                <div class="card-footer">
+                    {{jf "【全搜索模式】，在大藏经中同一品内（没有品，则同一卷或同一经内），理论上获得结果的成功率是100%" .Ift}}
+                </div>
+                <div class="card-footer">
+                    {{jf "由于部分经文只有句号，没有其他标点符号，【精准搜索模式】对这部分经典可能搜索不到" .Ift}}。
+                </div>
+                <div class="card-footer">
+                    {{jf "【全搜索模式】由于需要考虑成功率，故而搜索结果比较松散" .Ift}}。
+                </div>
+                <div class="card-footer">
+                    <b>{{jf "特殊情况" .Ift}}</b>：
+                    {{jf "【全搜索模式】中同时需要考虑性能问题，3，4个组合查询时，如果词频较大，会自动转为模糊搜索" .Ift}}。
+                </div>
+                <div class="card-footer">
+                    <b>{{jf "组合搜索" .Ift}}</b>{{jf "最多支持20页" .Ift}}。
+                </div>
+            </div>
+            <div class="card-footer">
+                【<b>{{jf "范围搜索" .Ift}}</b>】：<a href="{{.Host}}/mulu/" title="大藏经目录"><i class="bi-ui-checks-grid"></i></a>
+            </div>
+            <div class="card-footer">
+                {{jf "论部有少部分资料缺失，不在搜索结果中" .Ift}}。
+            </div>
+            <div class="card-footer">
+                {{jf "搜索是按词精准匹配，不能有错别字" .Ift}}。
+            </div>
+            <div class="card-footer">
+                {{jf "词典来源是《丁福保佛学大辞典》" .Ift}}。
+            </div>
+        </div>
+        {{template "footer" .}}
+</body>
+
+</html>

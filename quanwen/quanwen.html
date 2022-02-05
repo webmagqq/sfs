@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+    <meta name="keyWords" content='{{jf "佛经语录搜索,佛经搜索" .Ift}}' />
+    <meta name="description" content='{{jf "提供乾隆大藏经搜索,佛说语录，佛经摘录搜索。" .Ift}}' />
+    <title>{{jf .Jingming .Ift}}{{jf "全文" .Ift}},{{jf .Jingming .Ift}}{{jf "原文完整版诵读" .Ift}}--{{jf "搜佛说" .Ift}}</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+
+        <div class="card">
+            <div class="card-footer text-center" style="font-weight: 600;">
+                <h1>{{jf .Jingming .Ift}}{{jf "全文,原文完整版诵读" .Ift}} <a href="javascript:"><i class="bi-caret-right-fill" onclick="playv(document.getElementById('ldall').innerText)"></i></a></h1>
+            </div>
+        </div>
+        <p class="text-center">{{.Tophtml}}</p>
+        <div class="card" id="ldall">
+            {{.Rhtml}}
+        </div>
+        <script>
+            $("#ldall .bi-chevron-down").click(function () {
+                var shobj = $(this).parent().next();
+                var cl = $(this).attr("class");
+                if (cl == "bi-chevron-down") {
+                    shobj.show();
+                    $(this).attr("class", "bi-chevron-up");
+                }
+                else {
+                    shobj.hide();
+                    $(this).attr("class", "bi-chevron-down");
+                }
+    
+                if (shobj.text() == "") {
+                    var did = $(this).attr("id").replace("did", "");
+                    var l = (window.location.href.indexOf("l=") != -1) ? "&l=0" : "";
+    
+                    $.get("/getjingwen/?tid=" + did + l,
+                        function (data) {
+                            shobj.html(data);
+                        });
+                }
+    
+            });
+        </script>
+        <br />
+        <div class="card">
+            <div class="card-body">
+                <b>{{jf .Jingming .Ift}}{{jf "上下经文" .Ift}}</b>
+            </div>
+            {{.Hbhtml}}
+        </div>
+        <div class="card">
+    
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{jf "请先展开内容后方能读诵。多音字无法做到精准诵读。如果没有声音，请更换火狐浏览器或Google浏览器作为默认浏览器" .Ift}}。
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    
+        </div>
+    
+        <script>
+            $("#ldall .bi-chevron-down").css("cursor", "pointer");
+            //jquery 页面滚动到指定位置
+            var position = $("#jing{{.Wid}}").offset();
+            position.top = position.top - 60;
+            $("html,body").animate({ scrollTop: position.top }, 100);
+        </script>
+    {{template "footer" .}}
+  
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    {{template "static" .}}
+    <title>{{.Kw}}--{{jf "搜佛说--大藏经搜索引擎" .Ift}}</title>    
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+        <div class="card">
+            <div class="card-body">              
+
+                {{jf "搜索" .Ift}}： <a href="{{.Host}}/ming/{{.Kw}}{{.Up}}">{{.Kw}}</a>               
+            </div>
+        </div>
+        <div class="card">
+            {{.Rehtml}}
+            {{if eq .Ct 0}}
+            <div  class='card-header'>
+                <b>{{jf "如果确认找不到经典，可进入" .Ift}}<a href="{{.Host}}/huiji/"><b>{{jf "大藏经汇集" .Ift}}</b></a> {{jf "提交" .Ift}}。</b>
+            </div>
+            {{end}}
+        </div>
+        <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+
+            {{if ne .P "1"}}
+            <a href="javascript:history.back();"><span class="btn btn-outline-primary">{{jf "上一页" .Ift}}</span></a>
+            {{end}}
+            <a href="javascript:"><span class="btn btn-outline-secondary">{{.P}}</span></a>        
+            {{if eq .Ct 21}}
+            <a href="{{.Host}}/ming/{{.Kw}}-{{.Sid}}-{{.P1}}{{.Up}}"><span class="btn btn-outline-primary">{{jf "下一页" .Ift}}</span></a>
+            {{end}}
+        </div>
+           
+        <script>
+            document.getElementById('param').value = "{{.Kw}}";
+        </script>
+    {{template "footer" .}}
+ 
+</body>
+
+</html>

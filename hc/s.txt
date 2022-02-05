@@ -1,0 +1,12 @@
+﻿ 三归依 : <a href="/jingbu/三归依">三归依</a> , <a href="/jingbu/归依佛">归依佛</a> , <a href="/jingbu/归依法">归依法</a> , <a href="/jingbu/归依僧">归依僧</a><br />
+                    五戒 : <a href="/jingbu/五戒">五戒</a> , <a href="/jingbu/不杀生">不杀生</a> , <a href="/jingbu/不偷盗">不偷盗</a> , <a href="/jingbu/不邪淫">不邪淫</a> , <a href="/jingbu/不妄语">不妄语</a> , <a href="/jingbu/不饮酒">不饮酒</a><br />
+                    十善 : <a href="/jingbu/十善">十善</a> , <a href="/jingbu/不杀生">不杀生</a> , <a href="/jingbu/不偷盗">不偷盗</a> , <a href="/jingbu/不邪淫">不邪淫</a> , <a href="/jingbu/不恶口">不恶口</a> , <a href="/jingbu/不两舌">不两舌</a> , <a href="/jingbu/不妄语">不妄语</a> , <a href="/jingbu/不绮语">不绮语</a> , <a href="/jingbu/不贪">不贪</a> , <a href="/jingbu/不嗔">不嗔</a> , <a href="/jingbu/不痴">不痴</a><br />
+                    六度 : <a href="/jingbu/六度">六度</a> , <a href="/jingbu/布施">布施</a> , <a href="/jingbu/持戒">持戒</a> , <a href="/jingbu/忍辱">忍辱</a> , <a href="/jingbu/精进">精进</a> , <a href="/jingbu/禅定">禅定</a> , <a href="/jingbu/止观">止观</a> , <a href="/jingbu/智慧">智慧</a> , <a href="/jingbu/般若">般若</a><br />
+                    修行中生嗔 : <a href="/jingbu/忍辱">忍辱</a> , <a href="/jingbu/慈悲">慈悲</a><br />
+                    修行方法 : <a href="/jingbu/一心系念">一心系念</a> , <a href="/jingbu/系念">系念</a><br />
+                    什么是念佛 : <a href="/jingbu/念佛">念佛</a><br />
+                    佛学常识 : <a href="/jingbu/贪嗔痴">贪嗔痴</a> , <a href="/jingbu/贪 嗔 痴">贪 嗔 痴</a> , <a href="/jingbu/ 戒定慧"> 戒定慧</a> , <a href="/jingbu/戒 定 慧">戒 定 慧</a><br />
+                    阿弥陀佛国土 : <a href="/jingbu/极乐世界">极乐世界</a><br />
+                    般若 : <a href="/jingbu/无">无</a> , <a href="/jingbu/空">空</a> , <a href="/jingbu/非">非</a> , <a href="/jingbu/不执">不执</a> , <a href="/jingbu/不著">不著</a> , <a href="/jingbu/性空">性空</a> , <a href="/jingbu/空性">空性</a> , <a href="/jingbu/清净">清净</a><br />
+                    <b>名词/问答</b> : <a href="/jingbu/名为">名为</a> ，<a href="/jingbu/云何">云何</a> ，<a href="/jingbu/何为">何为</a> ，<a href="/jingbu/何者是">何者是</a> ，<a href="/jingbu/何等">何等</a><br />
+                    

@@ -1,0 +1,151 @@
+<html>
+
+<head>
+    {{template "static" .}}
+    <title>{{.Kw}}-{{jf "什么是" .Ift}}{{.Kw}},{{.Kw}}{{jf "是什么意思" .Ift}}---{{jf "搜佛说" .Ift}}</title>
+    <meta name="keyWords" content='{{jf "什么是" .Ift}}{{.Kw}},{{.Kw}}{{jf "是什么意思" .Ift}}' />
+    <meta name="description" content='搜索乾隆大藏经{{.Kw}}的经律论以及词典内容；{{.Kw}}在经律论中的意思。{{.Kw}}在大藏经的出处和解释--搜佛说。' />
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    {{$up:=.Up}}
+                    {{$ift:=.Ift}}
+                    <!-- 在range的作用域里面使用其他的变量，需要定义全局变量 -->
+                    {{range .Tjd}}
+                    <a href="{{.Host}}/jingbu/{{.ci}}{{$up}}">{{jf .ci $ift}}</a>
+                    <span class="badge rounded-pill bg-secondary">
+                        {{if eq .cs "0"}}
+                        <30 {{else}} {{.cs}} {{end}} </span>
+                            {{end}}
+                            -
+                            <a href="{{.Host}}/jingbu/{{.K}}{{.Up}}" title='{{jf "经部搜索" .Ift}}'><span
+                                    class="badge bg-primary" id="jlvjingbu">
+                                    {{jf "经" .Ift}}
+                                </span></a> -
+                            <a href="{{.Host}}/lvbu/{{.K}}{{.Up}}" title='{{jf "律部搜索" .Ift}}'><span
+                                    class="badge bg-primary" id="jlvlvbu">
+                                    {{jf "律" .Ift}}
+                                </span></a> -
+                            <a href="{{.Host}}/lunbu/{{.K}}{{.Up}}" title='{{jf "论部搜索" .Ift}}'><span
+                                    class="badge bg-primary" id="jlvlunbu">
+                                    {{jf "论" .Ift}}
+                                </span></a> -
+                            <a href="javascript:" title='{{jf "词典" .Ift}}' id="cidian"><span
+                                    class="badge bg-primary">
+                                    {{jf "词典" .Ift}}
+                                </span></a>
+                </div>
+                <div id="cidiannr" style="display: none;" >
+                    {{.Cidian}}
+                </div>
+                <script>
+                    $("#jlv{{.Jlv}}").attr("class", "badge bg-secondary");
+                    $("#cidian").click(function () {
+                        $("#cidiannr").toggle();
+                    });
+                </script>
+            </div>
+            {{$len:=len .Tjd}}
+            {{if gt $len 1}}
+            <div class="card-body">
+                <a href="{{.Host}}{{.Path}}" title='{{jf "保证结果精准" .Ift}}'>
+                    <span id="sm" class="badge bg-primary">{{jf "精准搜索" .Ift}}</span>
+                </a>
+                <a href="{{.Host}}{{.Path}}?jz=1" title='{{jf "保证成功率100%" .Ift}}'>
+                    <span id="sm1" class="badge bg-primary">{{jf "全搜索" .Ift}}</span>
+                </a>
+            </div>
+            {{end}}
+            <script>
+                $("#sm{{.Jz}}").attr("class", "badge bg-secondary");
+            </script>
+        </div>
+        <div class="card" id="resultcard">
+            {{.Rehtml}}                                  
+            <div  class='card-header'>
+                {{if .Ift}}            
+                简体搜索：<a href="{{.Host}}/{{.Jlv}}/{{.K}}">{{.K}}</a>
+                {{else}}
+                繁體搜索：<a href="{{.Host}}/{{.Jlv}}/{{.K}}?l=0">{{.K}}</a>
+                {{end}}
+            </div>          
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+                    {{if ne .P "1"}}
+                    <a href="javascript:history.back();"><span class="btn btn-outline-primary">{{jf "上一页" .Ift}}</span></a>
+                    {{end}}
+                    <a href="javascript:"><span class="btn btn-outline-secondary">{{.P}}</span></a>
+                    {{$jz:=""}}
+                    {{if ne .Jz "" }}
+                    {{$jz ="?jz=1"}}
+                    {{end}}
+                    {{if eq .Ct 21}}
+                    <a href="{{.Host}}/{{.Jlv}}/{{.K}}-{{.P1}}{{$jz}}"><span
+                            class="btn btn-outline-primary">{{jf "下一页" .Ift}}</span></a>
+                    {{end}}
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <b>
+                    {{jf "用时" .Ift}}
+                </b>： {{jf "搜索" .Ift}}：{{.St}}； {{jf "结集" .Ift}}：{{.Sst}}；
+                {{jf "页面" .Ift}}：{{.Pgt}}；
+            </div>
+        </div>
+        <div class="card-body">
+            <div><b>{{jf "相关搜索" .Ift}}</b>：</div>
+            <div>
+                {{.Ashtml}}
+            </div>
+        </div>
+
+    </div>
+    {{template "footer" .}}
+    <script>
+        //------加载一句经文--------
+        //1. 交集选择： $(".a.b")--选择同时包含a和b的元素。 <element class="a b good list card">
+        //2. 并集选择：$(".a, .b")--选择包含a或者包含b的元素。 <element class="a"><element class="b">
+        $("#resultcard .bi-arrow-up-circle,.bi-arrow-down-circle").click(function () {
+            var fdiv = $(this).parent().parent();
+            cobj = $(this);
+            jid = fdiv.attr("data-jid");
+            kw = fdiv.attr("data-kw");
+            ctid = $(this).attr("data-id");
+            //console.log(jid, kw, ctid);
+            updown = ($(this).attr("class") == "bi-arrow-up-circle") ? "0" : "1";
+            var l = (window.location.href.indexOf("l=") != -1) ? "&l=0" : "";
+            var divnr = $($(this).parent().parent().children("span")[1]);
+            $.get("/getonejuzi/?tid=" + ctid + "&jid=" + jid + "&kw=" + kw + "&updown=" + updown + l,
+                function (data) {
+                    //这里是异步执行，不能用$(this)。
+                    //console.log(cobj);
+                    if (updown == "0") {
+                        cobj.attr("data-id", parseInt(ctid) - 1);
+                        divnr.prepend(data + "<br>");
+                    }
+                    else {
+                        cobj.attr("data-id", parseInt(ctid) + 1);
+                        divnr.append(data + "<br>");
+                    }
+                });
+        });
+
+        document.getElementById('param').value = "{{.Kw}}";
+
+    </script>
+
+
+</body>
+
+</html>

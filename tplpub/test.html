@@ -1,0 +1,212 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage2" %>
+
+    <!DOCTYPE html>
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="static/icons/bootstrap-icons.css" rel="stylesheet" />
+        <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+        <script src="../static/jquery.js"></script>
+        <script src="../static/pubs.js?v=20210615"></script>
+        <script src="../static/jquery.cookie.js"></script>
+
+        <link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+        <link rel="bookmark" href="favicon.ico" />
+
+        <title>搜佛说</title>
+        <asp:ContentPlaceHolder id="head" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+
+    <body>
+        <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+            <div class="card">
+                <div class="card-footer text-center" style="font-weight: 600;">
+                    <a href="<%=qjubliang.url+" /"+fajian.UrlPara %>" title="<%=fajian.XianShi("搜佛说") %>">
+                            <img src="../img/logo2.jpg" />
+                            <%=fajian.XianShi("搜佛说") %></a>
+                    ，<%=fajian.XianShi("大藏经搜索引擎") %>
+
+                        <div class="btn-group" style="float: right">
+                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="fjti">
+                                    <%=fajian.XianShi("简体") %>
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="jianti">简体</a></li>
+                                <li><a class="dropdown-item" href="#" id="fanti">
+                                        <%=fajian.XianShi("繁體") %>
+                                    </a></li>
+                            </ul>
+                        </div>
+
+                </div>
+            </div>
+            <div class="p-2">
+                <a href="javascript:history.go(-1)"><i class="bi-chevron-double-left"></i>
+                    <%=fajian.XianShi("返回") %>
+                </a>
+                <a href="javascript:history.go(1)" style="float: right">
+                    <%=fajian.XianShi("前进") %><i class="bi-chevron-double-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+
+                <div class="card-body"
+                    style="max-width: 480px; margin-left: auto; margin-right: auto; margin-bottom: -30px;">
+                    <div id="slist" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradiojingbu" autocomplete="off"
+                            checked>
+                        <label class="btn btn-outline-secondary" for="btnradiojingbu" title="<%=fajian.XianShi("
+                            搜索经部经文") %>"><%=fajian.XianShi("经") %></label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradiolvbu" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="btnradiolvbu" title="<%=fajian.XianShi(" 搜索律部经文")
+                            %>"><%=fajian.XianShi("律") %></label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradiolunbu" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="btnradiolunbu" title="<%=fajian.XianShi("
+                            搜索论部经文、内容") %>"><%=fajian.XianShi("论") %></label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradioming" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="btnradioming" title="<%=fajian.XianShi("
+                            搜索经卷品论名等标题") %>"><%=fajian.XianShi("名") %></label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradiofoxuecidian"
+                            autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="btnradiofoxuecidian" title="<%=fajian.XianShi("
+                            搜索词典") %>"><%=fajian.XianShi("词典") %></label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradioduozang" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="btnradioduozang11" title="<%=fajian.XianShi("
+                            多藏版") %>"><a href="http://duo.soufoshuo.com/">
+                                <%=fajian.XianShi("多藏版") %>
+                            </a></label>
+                    </div>
+
+
+                </div>
+                <div class="card-header">
+                    <nav class="navbar navbar-light bg-light">
+                        <div class="input-group" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+
+                            <input type="text" class="form-control" name="param" id="param" list="datas"
+                                autocomplete="off" data-dir="" data-jlv="jingbu" placeholder="<%=fajian.XianShi("
+                                搜索经部经文") %>">
+                            <datalist id="datas" style="display: none; width: 50px"></datalist>
+                            <div class="input-group-text" id="bnsearch"><a href="javascript:"><b>
+                                        <%=fajian.XianShi("搜索") %>
+                                    </b></a></div>
+                            <div class="input-group-text"><a href="<%=qjubliang.url %>/selwhe.aspx"
+                                    title="<%=fajian.XianShi(" 自定义搜索") %>"><i class="bi-ui-checks-grid"></i></a></div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <a href="#top"></a>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+        <div class="card text-center">
+            <div class="card-body">
+                <a href="<%=qjubliang.url+" /"+fj %>"><%=fajian.XianShi("首页") %></a> |
+
+                <a href="<%=qjubliang.url %>/cipin/1<%=fajian.UrlPara %>">
+                    <%=fajian.XianShi("词频") %>
+                </a> |
+                <!--
+                <a href="<%=qjubliang.url %>/dazangjing/1<%=fajian.UrlPara %>"><%=fajian.XianShi("大藏经") %></a> | 
+                        <a href="<%=qjubliang.url %>/foyulu/1<%=fajian.UrlPara %>"><%=fajian.XianShi("佛经语录") %></a> |                         
+                        <a href="<%=qjubliang.url %>/wendaci/1<%=fajian.UrlPara %>"><%=fajian.XianShi("佛经问答") %></a> |
+            -->
+                <a href="<%=" http://gx.soufoshuo.com/"+fajian.UrlPara %>"><%=fajian.XianShi("共修") %></a> |
+                <a href="<%=" http://foli.soufoshuo.com/"+fajian.UrlPara %>"><%=fajian.XianShi("佛历") %></a> |
+                <a href="<%=qjubliang.url %>/liuyan.aspx<%=fajian.UrlPara %>">
+                    <%=fajian.XianShi("留言") %>
+                </a> |
+                <a href="<%=qjubliang.url %>/huchi.aspx<%=fajian.UrlPara %>">
+                    <%=fajian.XianShi("护持") %>
+                </a>
+
+            </div>
+            <div class="card-body">
+                常颂经典<i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/3743<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("心经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("心经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/100<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("金刚经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("金刚经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/6154<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("佛说阿弥陀经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("阿弥陀经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/6152<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("无量寿经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("无量寿经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/5902<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("佛说药师如来本愿经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("药师经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/1161<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("地藏经全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("地藏经") %>
+                </a>
+                <i class="bi-caret-right-fill"></i><a href="<%=qjubliang.url %>/quanwen/4992<%=fajian.UrlPara %>"
+                    title='<%=fajian.XianShi("普贤行愿品全文,原文完整版诵读") %>'>
+                    <%=fajian.XianShi("普贤行愿品") %>
+                </a>
+
+            </div>
+            <div class="card-body"><i class="bi-phone"></i><a href="<%=qjubliang.url+" /"%>mapp.aspx<%=fj %>"><b>
+                            <%=fajian.XianShi("搜佛说手机APP下载") %>
+                        </b></a> -- <%=fajian.XianShi("学习、深入经藏必备工具") %>
+            </div>
+            <div class="card-body"><i class="bi-book text-primary"></i><a
+                    href="http://webbook.soufoshuo.com/03-%e4%b8%8b%e8%bd%bd%e3%80%81%e4%bd%bf%e7%94%a8%28%e6%b0%b8%e4%b9%85%e5%85%8d%e8%b4%b9%29.txt"><b>
+                        <%=fajian.XianShi("网书--乾隆大藏经下载") %>
+                    </b></a> -- <%=fajian.XianShi("阅读、整理、补缺、搭建网站") %>
+                    <br />
+                    进入百度网盘--电子书分享，下载
+            </div>
+
+            <div class="card-body">
+                <a href="http://zhshu.cn/">四库全书</a>，四库全书搜索引擎
+            </div>
+            <div class="card-body">
+                <%=fajian.XianShi("无上甚深微妙法，百千万劫难遭遇，我今见闻得受持，愿解如来真实义。") %>
+                    <br />
+                    <%=fajian.XianShi("众生无边誓愿度，烦恼无尽誓愿断，法门无量誓愿学，佛道无上誓愿成。") %>
+                        <br />
+                        <%=fajian.XianShi("愿以此功德，回向十方三世一切众生，愿众生智慧如海，皆发菩提心，同成佛道。") %>
+            </div>
+            <div class="card-body">
+                <a href="javascript:" id="retop">
+                    <%=fajian.XianShi("返回顶部") %>
+                </a>
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

@@ -1,0 +1,165 @@
+<html>
+
+<head>
+    {{template "static" .}}
+    <title>{{jf "乾隆大藏经目录" .Ift}}</title>
+</head>
+
+<body>
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">   
+        <div class="card">
+            <div class="card-footer text-center" style="font-weight: 600;">
+                <a href="{{.Host}}{{.Up}}" title='{{jf "搜佛说" .Ift}}'>
+                    <img src="{{.Host}}/static/img/logo2.jpg" />{{jf "搜佛说" .Ift}}</a>
+                ，{{jf "乾隆大藏经搜索引擎" .Ift}}
+
+                <div class="btn-group" style="float: right">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span id="fjti">简体</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="jianti">简体</a></li>
+                        <li><a class="dropdown-item" href="#" id="fanti">繁體</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>  
+        <div class="card-body text-center">
+            <h1>
+                <img src="{{.Host}}/static/img/logo1.jpg" style="width: 36px;" />
+                <span id="limittitle">
+                    {{jf "经部" .Ift}}
+                </span>
+            </h1>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="input-group" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+
+                        <input type="text" class="form-control" name="param" id="param" list="datas" autocomplete="off"
+                            data-dir="" data-jlv="jingbu" placeholder="">
+                        <datalist id="datas" style="display: none; width: 50px"></datalist>
+                        <div class="input-group-text" id="bnsearch"><a href="javascript:"><b>
+                                    {{jf "搜索" .Ift}}
+                                </b></a></div>
+
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="card-body fs-6">
+            <b>{{jf "乾隆大藏经目录索引" .Ift}}</b>
+        </div>
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <ul class="list-group">
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button id="defsel" onclick="showdir(this)" data-tid="1" data-dir=""
+                            data-title='{{jf "经部" .Ift}}' data-jlv="jingbu" type="button" class="btn
+                            btn-outline-primary">{{jf "经部" .Ift}}</button>
+                        <button onclick="showdir(this)" data-tid="2" data-dir="" data-title='{{jf "律部" .Ift}}'
+                            data-jlv="lvbu" type="button" class="btn btn-outline-primary">
+                            {{jf "律部" .Ift}}
+                        </button>
+                        <button onclick="showdir(this)" data-tid="3" data-dir="" data-title='{{jf "论部" .Ift}}'
+                            data-jlv="lunbu" type="button" class="btn btn-outline-primary">
+                            {{jf "论部" .Ift}}
+                        </button>
+                    </div>
+                </ul>
+                <ul class="list-group">
+                    <li class="list-group-item" id="daohang">
+                    </li>
+                </ul>
+
+                <ol class="list-group list-group-numbered" id="dirs">
+
+                </ol>
+            </div>
+        </div>
+        <div class="card">
+
+            <div class="card-header">
+                {{jf "大藏经目录索引，同时可以进行 【选择】或【排除】 范围搜索" .Ift}}。
+            </div>
+        </div>
+        <script>
+            function showseldir(obj, css = 0) {
+                $("#limittitle").text($(obj).attr("data-title"));
+                var sty = (css == 0) ? "" : "line-through";
+                $("#limittitle").css("text-decoration", sty);
+                $("#context").css("text-decoration", sty);
+                $("#context").text($(obj).attr("data-title"));
+                var did = (css == 0) ? $(obj).attr("data-dir") : "-" + $(obj).attr("data-dir");
+                $("#param").attr("data-dir", did);
+                $("#param").attr("data-jlv", $(obj).attr("data-jlv"));
+
+                var myModal = new bootstrap.Modal(document.getElementById('toggleMyModal'), {
+                    keyboard: false
+                });
+                myModal.show();
+            }
+
+            function showdir(obj) {
+                $("#limittitle").text($(obj).attr("data-title"));
+                $("#limittitle").css("text-decoration", "");
+                var dir = $(obj).attr("data-dir");
+                $("#param").attr("data-dir", dir);
+                $("#param").attr("data-jlv", $(obj).attr("data-jlv"));
+                var fj = (window.location.href.indexOf("l=") != -1) ? "&1=" : "";
+                var url = "/showdir/?tid=" + $(obj).attr("data-tid") + fj;
+                $.get(url,
+                    function (data) {
+                        //console.log(data);
+                        $("#dirs").html(data);
+                    });
+
+                var dhhtml = obj.outerHTML;
+                if (dir == "")
+                    dhhtml = dhhtml.replace(/class="btn btn-outline-primary"/g, " href='javascript:' ").replace(/button/g, "a");
+                else
+                    dhhtml = $("#daohang").html() + " > " + dhhtml;
+                $("#daohang").html(dhhtml);
+
+            }
+
+              //$("#defsel").click();
+        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="toggleMyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            {{jf "搜索范围" .Ift}}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body fs-2" id="context">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            {{jf "关闭" .Ift}}
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "footer" .}}
+
+
+</body>
+
+</html>

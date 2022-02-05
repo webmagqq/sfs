@@ -1,0 +1,61 @@
+{{define "footer"}}
+<div class="card text-center">
+    <div class="card-body">
+        <a href="{{.Host}}/{{.Up}}">{{jf "首页" .Ift}}</a>-
+        <a href="{{.Host}}/cipin/1{{.Up}}">{{jf "词频" .Ift}}</a>-
+        <a href="{{.Host}}/shuoming/{{.Up}}">{{jf "搜索技巧" .Ift}}</a>-
+        <a href="{{.Host}}/xianyan/{{.Up}}">{{jf "绝对真理" .Ift}}</a>-
+        <a href="{{.Host}}/huiji/{{.Up}}">{{jf "大藏经汇集" .Ift}}</a>-
+        <a href="{{.Host}}/huchi/{{.Up}}">{{jf "护持" .Ift}}</a>
+    </div>
+    <div class="card-body">
+        {{jf "常颂经典" .Ift}}<i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/3743{{.Up}}"
+            title='{{jf "心经全文,原文完整版诵读" .Ift}}'>
+            {{jf "心经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/100{{.Up}}" title='{{jf "金刚经全文,原文完整版诵读" .Ift}}'>
+            {{jf "金刚经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/6154{{.Up}}"
+            title='{{jf "佛说阿弥陀经全文,原文完整版诵读" .Ift}}'>
+            {{jf "阿弥陀经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/6152{{.Up}}" title='{{jf "无量寿经全文,原文完整版诵读" .Ift}}'>
+            {{jf "无量寿经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/5902{{.Up}}"
+            title='{{jf "佛说药师如来本愿经全文,原文完整版诵读" .Ift}}'>
+            {{jf "药师经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/1161{{.Up}}" title=' {{jf "地藏经全文,原文完整版诵读" .Ift}}'>
+            {{jf "地藏经" .Ift}}
+        </a>
+        <i class="bi-caret-right-fill"></i><a href="{{.Host}}/quanwen/4992{{.Up}}"
+            title='{{jf "普贤行愿品全文,原文完整版诵读" .Ift}}'>
+            {{jf "普贤行愿品" .Ift}}
+        </a>
+
+    </div>
+    <div class="card-body"><i class="bi-phone"></i><a href="{{.Host}}/mapp/{{.Up}}"><b>
+                {{jf "搜佛说手机APP下载" .Ift}}
+            </b></a> --{{jf "学习、深入经藏必备工具" .Ift}}
+    </div>
+
+    <div class="card-body">
+        {{jf "无上甚深微妙法，百千万劫难遭遇，我今见闻得受持，愿解如来真实义。" .Ift}}
+        <br />
+        {{jf "众生无边誓愿度，烦恼无尽誓愿断，法门无量誓愿学，佛道无上誓愿成。" .Ift}}
+        <br />
+        {{jf "愿以此功德，回向十方三世一切众生，愿众生智慧如海，皆发菩提心，同成佛道。" .Ift}}
+    </div>
+
+    <div class="card-body">
+        <b>{{jf "佛音传播工作室" .Ift}}</b>
+        <br>
+        <a href="javascript:" id="retop">
+
+            {{jf "返回顶部" .Ift}}
+        </a>
+    </div>
+
+    {{end}}

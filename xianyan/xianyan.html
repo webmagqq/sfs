@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+    <title>{{jf "绝对真理" .Ift}}--{{jf "搜佛说" .Ift}}</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        <div class="card-footer">
+            <a href="{{.Host}}{{.Up}}" title='{{jf "搜佛说" .Ift}}'>
+                <img src="{{.Host}}/static/img/logo2.jpg" />{{jf "搜佛说" .Ift}}</a> -
+            <span class="fs-5">
+                <b>{{jf "佛法之绝对真理" .Ift}}</b>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="javascript:history.go(-1)">
+                    <i class="bi-chevron-double-left"></i>
+                </a>
+            </div>
+          
+            <div class="col text-end">
+                <a href="javascript:history.go(1)">
+                    <i class="bi-chevron-double-right"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div class="card">
+            <!-- Default panel contents -->
+
+            <div class="card-body">
+                {{.Text}}
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+                {{.Pg}}
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body text-center">
+        <b>{{jf "佛音传播工作室" .Ift}}</b>
+        <br>
+        <a href="javascript:" id="retop">
+            {{jf "返回顶部" .Ift}}
+        </a>
+    </div>
+</body>
+
+</html>

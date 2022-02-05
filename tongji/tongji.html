@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+   <title>流量统计</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+
+        <div class="card">
+         
+            <table class="table" style="width: 1168px">
+                <tr  class="card-footer">
+                    <td>访问类型</td>
+                    <td>关键词、编码</td>
+                    <td>访问端</td>
+                    <td>来源地址</td>
+                    <td>IP</td>
+                    <td>时间</td>
+                </tr>
+              {{.Rhtml}}
+            </table>
+          
+          </div>
+          
+    {{template "footer" .}}
+  
+
+</body>
+
+</html>

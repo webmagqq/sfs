@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+    <title>{{jf "大藏经汇集" .Ift}}--{{jf "搜佛说" .Ift}}</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+        <div class="card">
+            <!-- Default panel contents -->
+            <div class="card-footer">
+                <h1>
+                    {{jf "大藏经汇集" .Ift}}
+                </h1>
+            </div>
+            <div class="card-footer">
+                {{jf "鉴于各个版本的大藏经都不完整，故以《乾隆大藏经》为基础，汇集补缺其他版本的经典" .Ift}}。
+            </div>
+            <div class="card-footer">
+                {{jf "汇集补缺《乾隆大藏经》没有的经典，译本不同和论部暂时不收录" .Ift}}。
+            </div>
+            <div class="card-footer">
+                {{jf "收录的经典会归类至经律对应的“补缺”目录。可到" .Ift}}<a href="/mulu/" title="大藏经目录"><b>{{jf "大藏经目录" .Ift}}</b><i
+                        class="bi-ui-checks-grid"></i></a> {{jf "查看" .Ift}}。{{jf "收录后即可以搜索" .Ift}}。
+            </div>
+            <div class="card-footer">
+                <h3>{{jf "随喜提交！功德无量!" .Ift}}</h3>
+                <br>
+                {{jf "提交邮箱" .Ift}}： <span id="email"></span>@qq.com
+                <br>
+                {{jf "邮件格式" .Ift}} :
+                <div class="card-footer">
+                    {{jf "主题" .Ift}} : 大藏经汇集 <br>
+                    {{jf "正文" .Ift}} : xxx经 <br>
+                </div>               
+            </div>
+
+        </div>
+        <script>
+            $("#email").text("webmag")
+        </script>
+        {{template "footer" .}}
+</body>
+
+</html>

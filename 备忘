@@ -1,0 +1,38 @@
+cmd
+cd /d d:
+cd /d f:
+
+转换路径
+
+go build  
+main有多个.go文件，只需要go build 就行，表示全部编译
+
+go build -o windows-webbook.exe  
+go build -ldflags "-s -w -H=windowsgui"  -o nowindows-webbook.exe  
+编译无窗口程序
+
+
+
+
+//iis aspNetCore 搭建网站 web.config文件
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<configuration> 
+	<system.webServer> 
+		<handlers> <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified" /> 
+		</handlers> 
+	<aspNetCore processPath=".\windows-webbook-netcord.exe" /> 
+	</system.webServer> 
+</configuration>
+
+
+使用host.json方式自定义端口号
+环境：Linux系统/Windows系统。在.NET Core项目中提供了AddJsonFile来加载自定义的配置文件，所以我们可以把端口号的写在配置里面，然后使用AddJsonFile加载到项目中，需要更改端口号的时候直接更改配置文件就可以了，不需要修改代码再发布了，比上一种方案要简单些。
+
+新增一个host.json，配置文件名称可以自定义
+ 
+{
+    "urls": "http://*:9099"
+}
+
+

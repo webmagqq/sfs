@@ -1,0 +1,79 @@
+{{define "header"}}
+<div class="card">
+    <div class="card-footer text-center" style="font-weight: 600;">
+        <a href="{{.Host}}{{.Up}}" title='{{jf "搜佛说" .Ift}}'>
+            <img src="{{.Host}}/static/img/logo2.jpg" />{{jf "搜佛说" .Ift}}</a>
+        ，{{jf "大藏经搜索引擎" .Ift}}
+
+        <div class="btn-group float-end">
+            {{if .Ift}}
+            <a class="dropdown-item" href="{{.Host}}" id="jianti"><span class="badge bg-secondary">简体</span></a>
+            {{else}}
+            <a class="dropdown-item" href="{{.Host}}?l=0" id="jianti"><span class="badge bg-secondary">繁體</span></a>
+            {{end}}
+        </div>
+
+    </div>
+</div>
+<div class="p-2">
+    <div class="row">
+        <div class="col">
+            <a href="javascript:history.go(-1)">
+                <i class="bi-chevron-double-left"></i>
+            </a>
+        </div>
+        <div class="col-8 text-center">
+            <a href="{{.Host}}/xianyan/{{.Up}}"><b>{{jf "佛教，践行绝对真理的教育" .Ift}}</b></a>
+        </div>
+        <div class="col text-end">
+            <a href="javascript:history.go(1)">
+                <i class="bi-chevron-double-right"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="card">
+
+    <div class="card-body" style="max-width: 480px; margin-left: auto; margin-right: auto; margin-bottom: -30px;">
+        <div id="slist" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradiojingbu" autocomplete="off" checked>
+            <label class="btn btn-outline-secondary" for="btnradiojingbu" title='{{jf "搜索经部" .Ift}}'>{{jf "经部"
+                .Ift}}</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradiolvbu" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradiolvbu" title='{{jf "搜索律部" .Ift}}'>{{jf "律部"
+                .Ift}}</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradiolunbu" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradiolunbu" title='{{jf "搜索论部" .Ift}}'>{{jf "论部"
+                .Ift}}</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradioming" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradioming" title='{{jf "搜索经卷品论名" .Ift}}'>{{jf "经卷品名"
+                .Ift}}</label>
+
+        </div>
+
+
+    </div>
+    <div class="card-header">
+        <nav class="navbar navbar-light bg-light">
+            <div class="input-group" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+
+                <input type="text" class="form-control" name="param" id="param" list="datas" autocomplete="off"
+                    data-dir="" data-jlv="jingbu" placeholder='{{jf "搜索经部" .Ift}}'>
+                <datalist id="datas" style="display: none; width: 50px"></datalist>
+                <div class="input-group-text" id="bnsearch"><a href="javascript:"><b>{{jf "搜索" .Ift}}</b></a>
+                </div>
+                <div class="input-group-text"><a href="{{.Host}}/mulu/" title='{{jf "大藏经目录" .Ift}}'><i
+                            class="bi-ui-checks-grid"></i></a></div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+{{end}}

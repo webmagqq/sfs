@@ -1,0 +1,7 @@
+ip=  
+port=80  
+cache=5
+root=root
+psw=123456
+dbname=sfs2.5
+end

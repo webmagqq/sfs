@@ -1,0 +1,225 @@
+<html>
+
+<head>
+    {{template "static" .}}
+    <meta name="keyWords" content='{{jf "佛经语录搜索,佛经搜索" .Ift}}' />
+    <meta name="description" content='{{jf "提供乾隆大藏经搜索,佛说语录，佛经摘录搜索。" .Ift}}' />
+    <title>{{jf "搜佛说--大藏经搜索引擎" .Ift}}</title>
+</head>
+
+<body>
+    <script>
+        if (($.cookie('ft') == "1") && (window.location.href.indexOf("?") == -1))
+            window.location.href = "/?l=0"; //繁简体        
+    </script>
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        <div class="card">
+            <div class="card-footer text-center" style="font-weight: 600;">
+                <a href="{{.Host}}{{.Up}}" title='{{jf "搜佛说" .Ift}}'>
+                    <img src="{{.Host}}/static/img/logo2.jpg" />{{jf "搜佛说" .Ift}}</a>
+                ，{{jf "大藏经搜索引擎" .Ift}}
+
+                <div class="btn-group" style="float: right">
+                    <div class="btn-group float-end">
+                        {{if .Ift}}
+                        <a class="dropdown-item" href="{{.Host}}" id="jianti"><span
+                                class="badge bg-secondary">简体</span></a>
+                        {{else}}
+                        <a class="dropdown-item" href="{{.Host}}?l=0" id="jianti"><span
+                                class="badge bg-secondary">繁體</span></a>
+                        {{end}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div style="max-width: 45%; width: 210px; margin-right: auto; margin-left: auto;">
+            <img id="hlogo" style="margin-right: auto; margin-left: auto; border: 0px solid #FFFFFF;"
+                class="img-thumbnail" src="{{.Host}}/static/img/hlogo3.jpg" alt='{{jf "搜佛说" .Ift}}' />
+               
+        </div>
+        <div class="text-center" style=" width: 210px; margin-right: auto; margin-left: auto;">            
+                <a href="xianyan/{{.Up}}"><b>{{jf "佛教，践行绝对真理的教育" .Ift}}</b></a> 
+        </div>
+        <div class="card">
+
+            <div class="card-body"
+                style="max-width: 480px; margin-left: auto; margin-right: auto; margin-bottom: -30px;">
+                <div id="slist" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradiojingbu" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-secondary" for="btnradiojingbu" title='{{jf "搜索经部" .Ift}}'>{{jf "经部"
+                        .Ift}}</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradiolvbu" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradiolvbu" title='{{jf "搜索律部" .Ift}}'>{{jf "律部"
+                        .Ift}}</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradiolunbu" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradiolunbu" title='{{jf "搜索论部" .Ift}}'>{{jf "论部"
+                        .Ift}}</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradioming" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradioming" title='{{jf "搜索经卷品论名" .Ift}}'>{{jf
+                        "经卷品名"
+                        .Ift}}</label>
+
+                </div>
+
+
+            </div>
+            <div class="card-header">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="input-group" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+
+                        <input type="text" class="form-control" name="param" id="param" list="datas" autocomplete="off"
+                            data-dir="" data-jlv="jingbu" placeholder='{{jf "搜索经部" .Ift}}'>
+                        <datalist id="datas" style="display: none; width: 50px"></datalist>
+                        <div class="input-group-text" id="bnsearch"><a href="javascript:"><b>{{jf "搜索" .Ift}}</b></a>
+                        </div>
+                        <div class="input-group-text"><a href="/mulu/" title='{{jf "大藏经目录" .Ift}}'><i
+                                    class="bi-ui-checks-grid"></i></a></div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="row" style="max-width: 360px; margin-right: auto; margin-left: auto; margin-top: 15px;">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home1-tab" data-bs-toggle="tab" data-bs-target="#home1"
+                        type="button" role="tab" aria-controls="home1" aria-selected="true"><b>{{jf "搜索集"
+                            .Ift}}</b></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false"><b>{{jf "常搜经"
+                            .Ift}}</b></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                        type="button" role="tab" aria-controls="contact" aria-selected="false"><b>{{jf "足迹" .Ift}}
+                        </b></button>
+                </li>
+                <li class="nav-item" role="presentation" id="shishi">
+                    <button class="nav-link" id="searchtime-tab" data-bs-toggle="tab" data-bs-target="#searchtime"
+                        type="button" role="tab" aria-controls="searchtime" aria-selected="false"><b>{{jf "实时" .Ift}}
+                        </b></button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home1-tab">
+                    {{.Filecontent1}}
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <a href='{{.Host}}/ming/{{jf "金刚经" .Ift}}{{.Up}}' title='{{jf "金刚经全集" .Ift}}'>{{jf "金刚经全集"
+                        .Ift}}</a> -
+                    <a href='{{.Host}}/ming/{{jf "心经" .Ift}}{{.Up}}' title='{{jf "心经全集" .Ift}}'>{{jf "心经" .Ift}}</a> -
+                    <a href='{{.Host}}/ming/{{jf "阿弥陀经" .Ift}}{{.Up}}' title='{{jf "阿弥陀经全集" .Ift}}'>{{jf "阿弥陀经"
+                        .Ift}}</a> -
+                    <a href='{{.Host}}/ming/{{jf "楞严经" .Ift}}{{.Up}}' title='{{jf "楞严经全集" .Ift}}'>{{jf "楞严经" .Ift}}</a>
+                    -
+                    <a href='{{.Host}}/ming/{{jf "法华经" .Ift}}{{.Up}}' title='{{jf "法华经全集" .Ift}}'>{{jf "法华经" .Ift}}</a>
+                    -
+                    <a href='{{.Host}}/ming/{{jf "般若经" .Ift}}{{.Up}}' title='{{jf "大般若波罗蜜多经全集" .Ift}}'>{{jf "般若经"
+                        .Ift}}</a>
+                    -
+                    <a href='{{.Host}}/ming/{{jf "华严经" .Ift}}{{.Up}}' title='{{jf "华严经全集" .Ift}}'>{{jf "华严经" .Ift}}</a>
+                    -
+                    <a href='{{.Host}}/ming/{{jf "涅槃经" .Ift}}{{.Up}}' title='{{jf "大般涅槃经全集" .Ift}}'>{{jf "涅槃经"
+                        .Ift}}</a> -
+                    <a href='{{.Host}}/ming/{{jf "地藏经" .Ift}}{{.Up}}' title='{{jf "地藏经全集" .Ift}}'>{{jf "地藏经" .Ift}}</a>
+                    -
+                    <a href='{{.Host}}/ming/{{jf "药师经" .Ift}}{{.Up}}' title='{{jf "药师经全集" .Ift}}'>{{jf "药师经" .Ift}}</a>
+
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="col-md-12" id="wode">
+                        <span class="badge" id="clearcooke" style="background-color: #0000FF; cursor: pointer;">{{jf
+                            "清除" .Ift}}</span>
+                        <br />
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="searchtime" role="tabpanel" aria-labelledby="searchtime-tab">
+                    <div class="col-md-12" id="stimes">
+                        ...
+                    </div>
+                    <div class="col-md-12">
+                        <a href="javascript:" id="showst">
+                            <button type="button" class="btn btn-primary">查看</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+    <div class="card text-center">
+        <div class="card-body">
+            <a href="huiji/{{.Up}}"><b>{{jf "大藏经汇集" .Ift}}</b></a>
+            -
+            <a href="xianyan/{{.Up}}"><b>{{jf "绝对真理" .Ift}}</b></a>
+            -
+            <a href="cipin/1{{.Up}}"><b>{{jf "词频" .Ift}}</b></a>
+            -
+            <a href="shuoming/{{.Up}}"><b>{{jf "搜索说明" .Ift}}</b></a>
+            -
+            <a href="huchi/{{.Up}}"><b>{{jf "护持" .Ift}}</b></a>
+        </div>
+        <div class="card-body">
+            <i class="bi-phone"></i><a href="mapp/{{.Up}}"><b>{{jf "搜佛说手机APP下载" .Ift}}</b></a> -- {{jf "学习、深入经藏必备工具"
+            .Ift}}
+        </div>     
+        <div class="card-body">
+            {{jf "无明业障所在，疏漏难免" .Ift}}
+        </div>
+        <div class="card-body">
+            {{jf "无上甚深微妙法，百千万劫难遭遇，我今见闻得受持，愿解如来真实义" .Ift}} 。
+            <br />
+            {{jf "众生无边誓愿度，烦恼无尽誓愿断，法门无量誓愿学，佛道无上誓愿成" .Ift}}。
+            <br />
+            {{jf "愿以此功德，回向十方三世一切众生，愿众生智慧如海，皆发菩提心，同成佛道" .Ift}}。
+        </div>
+
+        <div class="card-body">
+            <b>{{jf "佛音传播工作室" .Ift}}</b> - <span id="email"></span>@qq.com
+            <br>
+            © 2019/11/1 -- 2021
+        </div>
+        <div class="card-body">
+            <a href="javascript:" id="retop">{{jf "返回顶部" .Ift}}</a>
+        </div>
+    </div>
+    <script>
+        $("#wode").append(getcooknames());
+        $("#email").text("webmag")
+
+        $("#showst").click(function () {
+            $.get("/test/?id=1&v=211",
+                function (data) {
+                    var rd = data.split("\n");
+                    var rditem
+                    var rhtml = "", url, ty, p, t
+                    for (j = 0, len = rd.length; j < len - 1; j++) {
+                        t = "经"
+                        rditem = getmindstr(rd[j], ".", ":", false, false).split(" ");
+                        ty = rditem[0]
+                        url = rditem[1]
+                        p = rditem[2]
+                        //p=getmindstr(p,"",":",false,false)
+                        if (p != "1") url = url + "-" + p
+                        if (ty == "lvbu") t = "律"
+                        if (ty == "lunbu") t = "论"
+                        rhtml += "<a href='" + ty + "/" + url + "'>" + url + "<a> <span class=\"badge bg-secondary\">" + t + "</span><br>"
+                    }
+                    //var rd=getmindstr(data,"",":",false,false)
+
+                    $("#stimes").html(rhtml);
+                });
+        });
+    </script>
+</body>
+
+</html>

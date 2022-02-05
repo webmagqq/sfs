@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    {{template "static" .}}
+
+    <title>{{jf .Bt .Ift}}--{{jf "搜佛说" .Ift}}</title>
+</head>
+
+<body>
+
+    <div id="home" style="max-width: 1024px; margin-right: auto; margin-left: auto;">
+        {{template "header" .}}
+        <div class="card">
+            <div class="card-footer" style="text-align: center" id="dh1">
+                <h1>{{.Bt}}</h1>
+            </div>
+
+            <div class="card-body" id="dlou">
+                {{.Jtext}}
+            </div>
+
+
+        </div>
+        <div class="card-footer">
+            {{jf "摘自" .Ift}}：<a href="{{.Host}}/quanwen/{{.Jid}}">{{.Jname}} </a>
+        </div>
+        <script>
+            document.getElementById('param').value = "{{.Bt}}";
+        </script>
+        {{template "footer" .}}
+
+
+</body>
+
+</html>
