@@ -16,7 +16,9 @@ cache=5
 
 配置说明
 
-root，数据库用户名 psw，密码
+root，数据库用户名 
+
+psw，密码
 
 dbname，数据库名称
 
